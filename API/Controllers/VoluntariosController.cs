@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Storage.Application.DTOs.Request;
 using Storage.Application.Services.Interfaces;
 using Storage.Domain.Entities;
 using Swashbuckle.AspNetCore.Annotations;
@@ -27,6 +28,24 @@ namespace Storage.API.Controllers
         public async Task<ActionResult> ObterPorId([FromRoute] string id)
         {
             return Ok(await this.service.ObterPorId(id));
+        }
+
+        [HttpPost("voluntarios")]
+        public async Task<ActionResult> Cadastrar([FromBody] CadastrarVoluntarioRequestDto request)
+        {
+            return Ok(await this.service.Cadastrar(request));
+        }
+
+        [HttpPut("voluntarios/{id}")]
+        public async Task<ActionResult> Atualizar([FromRoute] string id, [FromBody] AtualizarVoluntarioRequestDto request)
+        {
+            return Ok(await this.service.Atualizar(id, request));
+        }
+
+        [HttpDelete("voluntarios/{id}")]
+        public async Task<ActionResult> Deletar([FromRoute] string id)
+        {
+            return Ok(await this.service.Deletar(id));
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Storage.Application.DTOs.Request;
 using System;
 using System.Collections.Generic;
@@ -9,14 +8,10 @@ using System.Threading.Tasks;
 
 namespace Storage.Application.DTOs.Validation
 {
-    public class CadastrarVoluntarioValidationDto : AbstractValidator<CadastrarVoluntarioRequestDto>
+    public class AtualizarVoluntarioValidationDto : AbstractValidator<AtualizarVoluntarioRequestDto>
     {
-        public CadastrarVoluntarioValidationDto()
+        public AtualizarVoluntarioValidationDto()
         {
-            RuleFor(v => v.Id)
-                .NotEmpty().WithMessage("ID_VOLUNTARIO é obrigatório")
-                .Length(7).WithMessage("O ID do voluntário deve ter 7 caracteres.");
-
             RuleFor(v => v.Nome)
                 .NotEmpty().WithMessage("O nome do voluntário é obrigatório.")
                 .MaximumLength(100).WithMessage("O nome do voluntário não pode exceder 100 caracteres.");

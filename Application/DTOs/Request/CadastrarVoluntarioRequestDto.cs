@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage.Application.DTOs.Request
 {
-    public class VoluntarioRequestDto
+    public class CadastrarVoluntarioRequestDto
     {
         public string Id { get; set; }
         public string Nome { get; set; }

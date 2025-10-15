@@ -11,9 +11,8 @@ namespace Storage.Domain.Interfaces.Repositories
     {
         Task<List<VoluntarioModel>> ObterTodos();
         Task<VoluntarioModel?> ObterPorId(string id);
-
-        /*Task<VoluntarioModel> AdicionarAsync(VoluntarioModel voluntario);
-        Task<VoluntarioModel> AtualizarAsync(VoluntarioModel voluntario);
-        Task<bool> DeletarAsync(int id);*/
+        Task<VoluntarioModel> Cadastrar(VoluntarioModel voluntario);
+        Task<VoluntarioModel> Atualizar(VoluntarioModel voluntario);
+        Task<bool> Deletar(string id);
     }
 }

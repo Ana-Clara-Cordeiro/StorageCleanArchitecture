@@ -32,5 +32,30 @@ namespace Storage.Infrastructure.Repositories
                 .AsNoTracking()
                 .FirstOrDefaultAsync(v => v.Id == id);
         }
+
+        public async Task<VoluntarioModel> Cadastrar(VoluntarioModel voluntario)
+        {
+            await _context.Voluntarios.AddAsync(voluntario);
+            await _context.SaveChangesAsync();
+            return voluntario;
+        }
+
+        public async Task<VoluntarioModel> Atualizar(VoluntarioModel voluntario)
+        {
+            _context.Voluntarios.Update(voluntario);
+            await _context.SaveChangesAsync();
+            return voluntario;
+        }
+
+        public async Task<bool> Deletar(string id)
+        {
+            var voluntario = await _context.Voluntarios.FindAsync(id);
+            if (voluntario == null)
+                return false;
+
+            _context.Voluntarios.Remove(voluntario);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

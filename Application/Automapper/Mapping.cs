@@ -15,7 +15,8 @@ namespace Storage.Application.Automapper
         public Mapping()
         {
             CreateMap<VoluntarioModel, VoluntarioResponseDto>();
-            // CreateMap<VoluntarioRequestDto, VoluntarioModel>().ReverseMap();
+            CreateMap<CadastrarVoluntarioRequestDto, VoluntarioModel>();
+            CreateMap<AtualizarVoluntarioRequestDto, VoluntarioModel>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Storage.Application.DTOs.Response;
+﻿using Storage.Application.DTOs.Request;
+using Storage.Application.DTOs.Response;
 using Storage.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,9 @@ namespace Storage.Application.Services.Interfaces
     {
         Task<List<VoluntarioResponseDto>> ObterTodos();
         Task<VoluntarioResponseDto> ObterPorId(string id);
+        Task<VoluntarioResponseDto> Cadastrar(CadastrarVoluntarioRequestDto request);
+        Task<VoluntarioResponseDto> Atualizar(string id, AtualizarVoluntarioRequestDto request);
+        Task<bool> Deletar(string id);
+
     }
 }

@@ -46,5 +46,32 @@ namespace Storage.Application.Services
             return _mapper.Map<VoluntarioResponseDto>(voluntario);
         }
 
+        public async Task<VoluntarioResponseDto> Cadastrar(CadastrarVoluntarioRequestDto request)
+        {
+
+            var voluntario = _mapper.Map<VoluntarioModel>(request);
+            var result = await _repository.Cadastrar(voluntario);
+            return _mapper.Map<VoluntarioResponseDto>(result);
+        }
+
+        public async Task<VoluntarioResponseDto> Atualizar(string id, AtualizarVoluntarioRequestDto request)
+        {
+            var voluntario = await _repository.ObterPorId(id);
+            if (voluntario == null)
+            {
+                throw new Exception("Voluntário não encontrado");
+            }
+
+            var voluntarioDB = _mapper.Map<VoluntarioModel>(request);
+            voluntarioDB.Id = id;
+
+            var result = await _repository.Atualizar(voluntarioDB);
+            return _mapper.Map<VoluntarioResponseDto>(result);
+        }
+
+        public async Task<bool> Deletar(string id)
+        {
+            return await _repository.Deletar(id);
+        }
     }
 }
