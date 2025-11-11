@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Storage.Domain.Interfaces.Repositories
+namespace Storage.Domain.Entities
 {
-    internal interface IChavesRepository
+    internal class ChavesModel
     {
-        Task<List<ChavesModel>> ObterTodos();
     }
 }
