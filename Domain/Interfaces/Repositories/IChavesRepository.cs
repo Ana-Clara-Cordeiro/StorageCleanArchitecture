@@ -7,7 +7,7 @@ using Storage.Domain.Entities;
 
 namespace Storage.Domain.Interfaces.Repositories
 {
-    internal interface IChavesRepository
+    public interface IChavesRepository
     {
         Task<List<ChavesModel>> ObterTodos();
     }

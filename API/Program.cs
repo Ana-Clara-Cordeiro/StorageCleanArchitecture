@@ -28,9 +28,11 @@ builder.Services.AddValidatorsFromAssemblyContaining<AtualizarVoluntarioValidati
 
 // Repositories
 builder.Services.AddScoped<IVoluntarioRepository, VoluntarioRepository>();
+builder.Services.AddScoped<IChavesRepository, ChavesRepository>();
 
 // Services
 builder.Services.AddScoped<IVoluntarioService, VoluntarioService>();
+builder.Services.AddScoped<IChavesService, ChavesService>();
 
 // Controllers
 builder.Services.AddControllers();

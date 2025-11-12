@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Storage.Domain.Entities;
+using Storage.Domain.Interfaces.Repositories;
+using Storage.Infrastructure.Context;
+
+namespace Storage.Infrastructure.Repositories
+{
+    public class ChavesRepository : IChavesRepository
+    {
+        private readonly AppDbContext _context;
+
+        public ChavesRepository(AppDbContext context)
+        {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        public async Task<List<ChavesModel>> ObterTodos()
+        {
+            return await _context.Chaves
+                .AsNoTracking()
+                .ToListAsync();
+
+        }
+
+    }
+}

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Storage.Domain.Entities
+﻿namespace Storage.Domain.Entities
 {
-    internal class ChavesModel
+    public class ChavesModel
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         public string Nome { get; set; }
 

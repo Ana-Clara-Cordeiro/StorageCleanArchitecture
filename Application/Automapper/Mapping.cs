@@ -17,6 +17,7 @@ namespace Storage.Application.Automapper
             CreateMap<VoluntarioModel, VoluntarioResponseDto>();
             CreateMap<CadastrarVoluntarioRequestDto, VoluntarioModel>();
             CreateMap<AtualizarVoluntarioRequestDto, VoluntarioModel>();
+            CreateMap<ChavesModel, ChavesResponseDto>();
         }
     }
 }
