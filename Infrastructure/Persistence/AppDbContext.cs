@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Storage.Domain.Entities;
 using Storage.Infrastructure.Persistence.Mappers;
+using Storage.Infrastructure.Persistence.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,12 @@ namespace Storage.Infrastructure.Context
 
         public DbSet<VoluntarioModel> Voluntarios { get; set; }
 
+        public DbSet<ChavesModel> Chaves { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new VoluntarioMapper());
+            modelBuilder.ApplyConfiguration(new ChavesMapper());
         }
     }
 }
