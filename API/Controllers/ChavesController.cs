@@ -24,5 +24,12 @@ namespace Storage.API.Controllers
             return Ok(await this.service.ObterTodos());
         }
 
+        [HttpGet("chaves/{id}")]
+
+        public async Task<ActionResult> ObterPorId([FromRoute] long id)
+        {
+            return Ok(await this.service.ObterPorId(id));
+        }
+
     }
 }
