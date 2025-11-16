@@ -10,5 +10,7 @@ namespace Storage.Domain.Interfaces.Repositories
     public interface IChavesRepository
     {
         Task<List<ChavesModel>> ObterTodos();
+
+        Task<ChavesModel?> ObterPorId(long id);
     }
 }

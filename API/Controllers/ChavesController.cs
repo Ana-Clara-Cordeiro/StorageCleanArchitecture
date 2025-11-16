@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Storage.Application.Services;
 using Storage.Application.Services.Interfaces;
 using Storage.Domain.Entities;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Net;
 
 namespace Storage.API.Controllers
 {
@@ -22,6 +23,17 @@ namespace Storage.API.Controllers
         public async Task<ActionResult> obterTodos()
         {
             return Ok(await this.service.ObterTodos());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ObterPorId(long id)
+        {
+            var chave = await service.ObterPorId(id);
+
+            if (chave == null)
+                return NotFound(new { mensagem = $"Chave com registro {id} não encontrada." });
+
+            return Ok(chave);
         }
 
     }

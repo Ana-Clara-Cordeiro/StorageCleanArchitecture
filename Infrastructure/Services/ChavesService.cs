@@ -34,5 +34,17 @@ namespace Storage.Application.Services
             return _mapper.Map<List<ChavesResponseDto>>(chaves);
         }
 
+        public async Task<ChavesResponseDto> ObterPorId(long id)
+        {
+            var chaves = await _repository.ObterPorId(id);
+
+            if(chaves == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<ChavesResponseDto>(chaves);
+        }
+
     }
 }

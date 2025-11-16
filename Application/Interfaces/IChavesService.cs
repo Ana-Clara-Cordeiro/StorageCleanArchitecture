@@ -11,5 +11,6 @@ namespace Storage.Application.Services.Interfaces
     public interface IChavesService
     {
         Task<List<ChavesResponseDto>> ObterTodos();
+        Task<ChavesResponseDto> ObterPorId(long id);
     }
 }

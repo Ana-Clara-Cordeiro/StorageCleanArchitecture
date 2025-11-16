@@ -8,6 +8,7 @@ using Storage.Domain.Entities;
 using Storage.Domain.Interfaces.Repositories;
 using Storage.Infrastructure.Context;
 
+
 namespace Storage.Infrastructure.Repositories
 {
     public class ChavesRepository : IChavesRepository
@@ -25,6 +26,13 @@ namespace Storage.Infrastructure.Repositories
                 .AsNoTracking()
                 .ToListAsync();
 
+        }
+
+        public async Task<ChavesModel?> ObterPorId(long id)
+        {
+            return await _context.Chaves
+                .AsNoTracking()
+                .FirstOrDefaultAsync(v => v.Id == id);
         }
 
     }
