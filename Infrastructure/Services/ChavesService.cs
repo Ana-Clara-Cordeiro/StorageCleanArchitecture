@@ -40,7 +40,7 @@ namespace Storage.Application.Services
 
             if(chaves == null)
             {
-                throw new Exception("Chave não encontrada");
+                return null;
             }
 
             return _mapper.Map<ChavesResponseDto>(chaves);
