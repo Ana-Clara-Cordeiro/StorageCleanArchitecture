@@ -44,7 +44,7 @@ namespace Storage.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Atualizar([FromRoute] string id, [FromBody] AtualizarChaveRequestDto request)
+        public async Task<ActionResult> Atualizar([FromRoute] long id, [FromBody] AtualizarChavesResquestDto request)
         {
             return Ok(await this.service.Atualizar(id, request));
         }

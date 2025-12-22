@@ -16,5 +16,7 @@ namespace Storage.Application.Services.Interfaces
         Task<ChavesResponseDto> ObterPorId(long id);
 
         Task<ChavesResponseDto> Cadastrar(CadastrarChavesRequestDto request);
+
+        Task<ChavesResponseDto> Atualizar(long id, AtualizarChavesResquestDto request);
     }
 }
