@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Storage.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("chaves")]
     public class ChavesController : ControllerBase
     {
         private readonly IChavesService service;
@@ -19,7 +19,7 @@ namespace Storage.API.Controllers
             this.service = service;
         }
 
-        [HttpGet("chaves")]
+        [HttpGet]
 
         public async Task<ActionResult> obterTodos()
         {
@@ -47,6 +47,13 @@ namespace Storage.API.Controllers
         public async Task<ActionResult> Atualizar([FromRoute] long id, [FromBody] AtualizarChavesResquestDto request)
         {
             return Ok(await this.service.Atualizar(id, request));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Deletar(long id)
+        {
+            await service.Deletar(id);
+            return NoContent();
         }
 
     }

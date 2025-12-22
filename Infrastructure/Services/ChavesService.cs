@@ -70,5 +70,17 @@ namespace Storage.Application.Services
             return _mapper.Map<ChavesResponseDto>(result);
         }
 
+        public async Task Deletar(long id)
+        {
+
+            var chaves = await _repository.ObterPorId(id);
+            if(chaves == null)
+            {
+                throw new KeyNotFoundException("Chave não encontrada");
+            }
+
+            await _repository.Deletar(id);
+        }
+
     }
 }

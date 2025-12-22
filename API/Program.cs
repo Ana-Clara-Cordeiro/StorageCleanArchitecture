@@ -9,6 +9,7 @@ using Storage.Application.Services.Interfaces;
 using Storage.Domain.Interfaces.Repositories;
 using Storage.Infrastructure.Context;
 using Storage.Infrastructure.Repositories;
+using Storage.API.Middlewares;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,5 +50,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 app.Run();
