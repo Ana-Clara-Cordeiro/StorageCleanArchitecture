@@ -12,5 +12,7 @@ namespace Storage.Domain.Interfaces.Repositories
         Task<List<ChavesModel>> ObterTodos();
 
         Task<ChavesModel?> ObterPorId(long id);
+
+        Task<ChavesModel> Cadastrar(ChavesModel chaves);
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Storage.Application.Services;
 using Storage.Application.Services.Interfaces;
+using Storage.Application.DTOs.Request;
 using Storage.Domain.Entities;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -36,9 +37,13 @@ namespace Storage.API.Controllers
             return Ok(chave);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Cadastrar([FromBody] CadastrarChavesRequestDto request)
+        {
+            return Ok(await this.service.Cadastrar(request));
+        }
 
         [HttpPut("{id}")]
-
         public async Task<ActionResult> Atualizar([FromRoute] string id, [FromBody] AtualizarChaveRequestDto request)
         {
             return Ok(await this.service.Atualizar(id, request));

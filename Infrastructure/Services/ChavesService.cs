@@ -8,6 +8,8 @@ using Storage.Domain.Interfaces.Repositories;
 using Storage.Infrastructure.Context;
 using Storage.Application.DTOs.Response;
 using Storage.Application.Services.Interfaces;
+using Storage.Application.DTOs.Request;
+using Storage.Domain.Entities;
 
 namespace Storage.Application.Services
 {
@@ -44,6 +46,13 @@ namespace Storage.Application.Services
             }
 
             return _mapper.Map<ChavesResponseDto>(chaves);
+        }
+
+        public async Task<ChavesResponseDto> Cadastrar(CadastrarChavesRequestDto request)
+        {
+            var chaves = _mapper.Map<ChavesModel>(request);
+            var result = await _repository.Cadastrar(chaves);
+            return _mapper.Map<ChavesResponseDto>(result);
         }
 
     }
