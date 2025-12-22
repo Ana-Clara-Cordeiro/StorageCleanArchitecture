@@ -41,6 +41,13 @@ namespace Storage.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return chaves;
         }
+
+        public async Task<ChavesModel> Atualizar(ChavesModel chaves)
+        {
+            _context.Chaves.Update(chaves);
+            await _context.SaveChangesAsync();
+            return chaves;
+        } 
             
 
     }

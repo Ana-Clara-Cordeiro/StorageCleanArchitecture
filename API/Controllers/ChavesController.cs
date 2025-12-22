@@ -42,5 +42,12 @@ namespace Storage.API.Controllers
         {
             return Ok(await this.service.Cadastrar(request));
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Atualizar([FromRoute] long id, [FromBody] AtualizarChavesResquestDto request)
+        {
+            return Ok(await this.service.Atualizar(id, request));
+        }
+
     }
 }

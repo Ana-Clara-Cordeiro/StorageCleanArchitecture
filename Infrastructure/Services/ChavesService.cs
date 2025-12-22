@@ -55,5 +55,20 @@ namespace Storage.Application.Services
             return _mapper.Map<ChavesResponseDto>(result);
         }
 
+        public async Task<ChavesResponseDto> Atualizar(long id, AtualizarChavesResquestDto request)
+        {
+            var chaves = await _repository.ObterPorId(id);
+            if(chaves == null)
+            {
+                throw new Exception("Chave não encontrada");
+            }
+
+            var chavesDb = _mapper.Map<ChavesModel>(request);
+            chavesDb.Id = id;
+
+            var result = await _repository.Atualizar(chavesDb);
+            return _mapper.Map<ChavesResponseDto>(result);
+        }
+
     }
 }

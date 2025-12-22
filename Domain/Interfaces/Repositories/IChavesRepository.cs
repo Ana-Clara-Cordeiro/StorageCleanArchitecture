@@ -14,5 +14,7 @@ namespace Storage.Domain.Interfaces.Repositories
         Task<ChavesModel?> ObterPorId(long id);
 
         Task<ChavesModel> Cadastrar(ChavesModel chaves);
+
+        Task<ChavesModel> Atualizar(ChavesModel chaves);
     }
 }
