@@ -35,5 +35,13 @@ namespace Storage.Infrastructure.Repositories
                 .FirstOrDefaultAsync(v => v.Id == id);
         }
 
+        public async Task<ChavesModel> Cadastrar(ChavesModel chaves)
+        {
+            await _context.Chaves.AddAsync(chaves);
+            await _context.SaveChangesAsync();
+            return chaves;
+        }
+            
+
     }
 }
