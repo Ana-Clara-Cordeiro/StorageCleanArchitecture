@@ -8,7 +8,7 @@ using System.Net;
 namespace Storage.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("voluntarios")]
     public class VoluntariosController : ControllerBase
     {
         private readonly IVoluntarioService service;
@@ -18,31 +18,31 @@ namespace Storage.API.Controllers
             this.service = service;
         }
 
-        [HttpGet("voluntarios")]
+        [HttpGet]
         public async Task<ActionResult> ObterTodos()
         {
             return Ok(await this.service.ObterTodos());
         }
 
-        [HttpGet("voluntarios/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> ObterPorId([FromRoute] string id)
         {
             return Ok(await this.service.ObterPorId(id));
         }
 
-        [HttpPost("voluntarios")]
+        [HttpPost]
         public async Task<ActionResult> Cadastrar([FromBody] CadastrarVoluntarioRequestDto request)
         {
             return Ok(await this.service.Cadastrar(request));
         }
 
-        [HttpPut("voluntarios/{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult> Atualizar([FromRoute] string id, [FromBody] AtualizarVoluntarioRequestDto request)
         {
             return Ok(await this.service.Atualizar(id, request));
         }
 
-        [HttpDelete("voluntarios/{id}")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> Deletar([FromRoute] string id)
         {
             return Ok(await this.service.Deletar(id));

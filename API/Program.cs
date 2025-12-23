@@ -9,9 +9,17 @@ using Storage.Application.Services.Interfaces;
 using Storage.Domain.Interfaces.Repositories;
 using Storage.Infrastructure.Context;
 using Storage.Infrastructure.Repositories;
+using Storage.API.Middlewares;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+    });
 
 // DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -28,9 +36,11 @@ builder.Services.AddValidatorsFromAssemblyContaining<AtualizarVoluntarioValidati
 
 // Repositories
 builder.Services.AddScoped<IVoluntarioRepository, VoluntarioRepository>();
+builder.Services.AddScoped<IChavesRepository, ChavesRepository>();
 
 // Services
 builder.Services.AddScoped<IVoluntarioService, VoluntarioService>();
+builder.Services.AddScoped<IChavesService, ChavesService>();
 
 // Controllers
 builder.Services.AddControllers();
@@ -47,5 +57,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 app.Run();
