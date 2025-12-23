@@ -16,5 +16,7 @@ namespace Storage.Domain.Interfaces.Repositories
         Task<ChavesModel> Cadastrar(ChavesModel chaves);
 
         Task<ChavesModel> Atualizar(ChavesModel chaves);
+
+        Task Deletar(long id);
     }
 }

@@ -18,5 +18,7 @@ namespace Storage.Application.Services.Interfaces
         Task<ChavesResponseDto> Cadastrar(CadastrarChavesRequestDto request);
 
         Task<ChavesResponseDto> Atualizar(long id, AtualizarChavesResquestDto request);
+
+        Task Deletar(long id);
     }
 }

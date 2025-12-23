@@ -48,7 +48,16 @@ namespace Storage.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return chaves;
         } 
-            
 
+        public async Task Deletar(long id)
+        {
+            var chaves = await _context.Chaves.FindAsync(id);
+
+            if (chaves == null)
+                throw new KeyNotFoundException("Chave não encontrada");
+
+            _context.Chaves.Remove(chaves);
+            await _context.SaveChangesAsync();
+        }
     }
 }
